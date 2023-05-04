@@ -7,7 +7,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>disable</ImplicitUsings>
     <GenerateDocumentationFile>False</GenerateDocumentationFile>
-    <Version>0.1.0</Version>
+    <Version>0.2.0.0</Version>
     <Authors>koturn</Authors>
     <Description>An application for rapid firing click.</Description>
     <Copyright>Copyright (C) 2022 koturn All Rights Reserverd.</Copyright>
