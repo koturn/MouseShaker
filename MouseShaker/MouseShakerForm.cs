@@ -87,6 +87,7 @@ namespace MouseShaker
                 var offsetX = (int)_numericUpDownOffsetX.Value;
                 var offsetY = (int)_numericUpDownOffsetY.Value;
                 var framerate = _numericUpDownFramerate.Value;
+                var isMouseDragEnabled = _checkBoxMouseDrag.Checked;
                 _task = Task.Factory.StartNew(
                     () =>
                     {
@@ -96,12 +97,19 @@ namespace MouseShaker
                             return;
                         }
 
+                        var intervalMs = (int)(1000.0 / (double)framerate);
+
+                        if (isMouseDragEnabled)
+                        {
+                            InputUtil.SendMouseInput(MouseEventF.LeftDown);
+                            Thread.Sleep(intervalMs * 2);
+                        }
+
                         var mouseInputs = new[]
                         {
                             Input.CreateMouseInput(MouseEventF.Move, offsetX, offsetY),
                             Input.CreateMouseInput(MouseEventF.Move, -offsetX, -offsetY)
                         };
-                        var intervalMs = (int)(1000.0 / (double)framerate);
 
                         while (!cts.IsCancellationRequested)
                         {
@@ -114,6 +122,10 @@ namespace MouseShaker
                                     break;
                                 }
                             }
+                        }
+                        if (isMouseDragEnabled)
+                        {
+                            InputUtil.SendMouseInput(MouseEventF.LeftUp);
                         }
                     },
                     (_cts = new CancellationTokenSource()).Token,

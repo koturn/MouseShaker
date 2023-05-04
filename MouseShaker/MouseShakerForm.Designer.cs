@@ -38,9 +38,10 @@ namespace MouseShaker
             System.Windows.Forms.Label label2;
             this._numericUpDownFramerate = new System.Windows.Forms.NumericUpDown();
             this._comboBoxHotKey = new System.Windows.Forms.ComboBox();
-            this._labelStatus = new System.Windows.Forms.Label();
             this._numericUpDownOffsetX = new System.Windows.Forms.NumericUpDown();
             this._numericUpDownOffsetY = new System.Windows.Forms.NumericUpDown();
+            this._labelStatus = new System.Windows.Forms.Label();
+            this._checkBoxMouseDrag = new System.Windows.Forms.CheckBox();
             tableLayoutPanelWindow = new System.Windows.Forms.TableLayoutPanel();
             groupBoxConfig = new System.Windows.Forms.GroupBox();
             tableLayoutPanelConfig = new System.Windows.Forms.TableLayoutPanel();
@@ -70,7 +71,7 @@ namespace MouseShaker
             tableLayoutPanelWindow.RowCount = 2;
             tableLayoutPanelWindow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             tableLayoutPanelWindow.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            tableLayoutPanelWindow.Size = new System.Drawing.Size(264, 181);
+            tableLayoutPanelWindow.Size = new System.Drawing.Size(264, 209);
             tableLayoutPanelWindow.TabIndex = 0;
             // 
             // groupBoxConfig
@@ -78,9 +79,9 @@ namespace MouseShaker
             groupBoxConfig.AutoSize = true;
             groupBoxConfig.Controls.Add(tableLayoutPanelConfig);
             groupBoxConfig.Dock = System.Windows.Forms.DockStyle.Fill;
-            groupBoxConfig.Location = new System.Drawing.Point(3, 69);
+            groupBoxConfig.Location = new System.Drawing.Point(3, 72);
             groupBoxConfig.Name = "groupBoxConfig";
-            groupBoxConfig.Size = new System.Drawing.Size(258, 109);
+            groupBoxConfig.Size = new System.Drawing.Size(258, 134);
             groupBoxConfig.TabIndex = 2;
             groupBoxConfig.TabStop = false;
             groupBoxConfig.Text = "Config";
@@ -103,14 +104,16 @@ namespace MouseShaker
             tableLayoutPanelConfig.Controls.Add(label2, 3, 2);
             tableLayoutPanelConfig.Controls.Add(this._numericUpDownOffsetX, 2, 2);
             tableLayoutPanelConfig.Controls.Add(this._numericUpDownOffsetY, 4, 2);
+            tableLayoutPanelConfig.Controls.Add(this._checkBoxMouseDrag, 0, 3);
             tableLayoutPanelConfig.Dock = System.Windows.Forms.DockStyle.Fill;
             tableLayoutPanelConfig.Location = new System.Drawing.Point(3, 19);
             tableLayoutPanelConfig.Name = "tableLayoutPanelConfig";
-            tableLayoutPanelConfig.RowCount = 3;
+            tableLayoutPanelConfig.RowCount = 4;
             tableLayoutPanelConfig.RowStyles.Add(new System.Windows.Forms.RowStyle());
             tableLayoutPanelConfig.RowStyles.Add(new System.Windows.Forms.RowStyle());
             tableLayoutPanelConfig.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            tableLayoutPanelConfig.Size = new System.Drawing.Size(252, 87);
+            tableLayoutPanelConfig.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanelConfig.Size = new System.Drawing.Size(252, 112);
             tableLayoutPanelConfig.TabIndex = 3;
             // 
             // labelHotKey
@@ -182,18 +185,6 @@ namespace MouseShaker
             this._comboBoxHotKey.Size = new System.Drawing.Size(88, 23);
             this._comboBoxHotKey.TabIndex = 5;
             this._comboBoxHotKey.SelectedIndexChanged += new System.EventHandler(this.ComboBoxHotKey_SelectedIndexChanged);
-            // 
-            // _labelStatus
-            // 
-            this._labelStatus.AutoSize = true;
-            this._labelStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._labelStatus.Font = new System.Drawing.Font("Yu Gothic UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this._labelStatus.Location = new System.Drawing.Point(3, 0);
-            this._labelStatus.Name = "_labelStatus";
-            this._labelStatus.Size = new System.Drawing.Size(258, 66);
-            this._labelStatus.TabIndex = 1;
-            this._labelStatus.Text = "Inactive";
-            this._labelStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelOffset
             // 
@@ -267,11 +258,35 @@ namespace MouseShaker
             this._numericUpDownOffsetY.Size = new System.Drawing.Size(66, 23);
             this._numericUpDownOffsetY.TabIndex = 12;
             // 
+            // _labelStatus
+            // 
+            this._labelStatus.AutoSize = true;
+            this._labelStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._labelStatus.Font = new System.Drawing.Font("Yu Gothic UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this._labelStatus.Location = new System.Drawing.Point(3, 0);
+            this._labelStatus.Name = "_labelStatus";
+            this._labelStatus.Size = new System.Drawing.Size(258, 69);
+            this._labelStatus.TabIndex = 1;
+            this._labelStatus.Text = "Inactive";
+            this._labelStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // _checkBoxMouseDrag
+            // 
+            this._checkBoxMouseDrag.AutoSize = true;
+            tableLayoutPanelConfig.SetColumnSpan(this._checkBoxMouseDrag, 5);
+            this._checkBoxMouseDrag.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._checkBoxMouseDrag.Location = new System.Drawing.Point(3, 90);
+            this._checkBoxMouseDrag.Name = "_checkBoxMouseDrag";
+            this._checkBoxMouseDrag.Size = new System.Drawing.Size(246, 19);
+            this._checkBoxMouseDrag.TabIndex = 13;
+            this._checkBoxMouseDrag.Text = "With Mouse Drag";
+            this._checkBoxMouseDrag.UseVisualStyleBackColor = true;
+            // 
             // MouseShakerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(264, 181);
+            this.ClientSize = new System.Drawing.Size(264, 209);
             this.Controls.Add(tableLayoutPanelWindow);
             this.Name = "MouseShakerForm";
             this.Text = "MouseShaker: Inactive";
@@ -298,5 +313,6 @@ namespace MouseShaker
         private System.Windows.Forms.Label _labelStatus;
         private System.Windows.Forms.NumericUpDown _numericUpDownOffsetX;
         private System.Windows.Forms.NumericUpDown _numericUpDownOffsetY;
+        private System.Windows.Forms.CheckBox _checkBoxMouseDrag;
     }
 }
