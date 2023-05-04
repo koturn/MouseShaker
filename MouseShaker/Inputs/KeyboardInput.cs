@@ -38,5 +38,23 @@ namespace MouseShaker.Inputs
         /// Use the GetMessageExtraInfo function to obtain this information.
         /// </summary>
         public IntPtr ExtraInfo;
+
+
+        /// <summary>
+        /// Initialize all members.
+        /// </summary>
+        /// <param name="flags">Specifies various aspects of a keystroke.</param>
+        /// <param name="virtualKey">A virtual-key code.</param>
+        /// <param name="scanCode">A hardware scan code for the key.</param>
+        /// <param name="time">The time stamp for the event, in milliseconds.</param>
+        /// <param name="extraInfo">An additional value associated with the keystroke.</param>
+        public KeyboardInput(KeyEventF flags, short virtualKey = 0, short scanCode = 0, int time = 0, IntPtr extraInfo = default)
+        {
+            Flags = flags;
+            VirtualKey = virtualKey;
+            ScanCode = scanCode;
+            Time = time;
+            ExtraInfo= extraInfo;
+        }
     }
 }

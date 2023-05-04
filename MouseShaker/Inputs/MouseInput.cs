@@ -54,5 +54,25 @@ namespace MouseShaker.Inputs
         /// An application calls GetMessageExtraInfo to obtain this extra information.
         /// </summary>
         public IntPtr ExtraInfo;
+
+
+        /// <summary>
+        /// Initialize all members.
+        /// </summary>
+        /// <param name="flags">A set of bit flags that specify various aspects of mouse motion and button clicks.</param>
+        /// <param name="x">The absolute position of the mouse, or the amount of motion since the last mouse event was generated, depending on the value of the <paramref name="flags"/>.</param>
+        /// <param name="y">The absolute position of the mouse, or the amount of motion since the last mouse event was generated, depending on the value of the <paramref name="flags"/>.</param>
+        /// <param name="data">A mouse data depends on <paramref name="flags"/>.</param>
+        /// <param name="time">The time stamp for the event, in milliseconds.</param>
+        /// <param name="extraInfo">An additional value associated with the mouse event.</param>
+        public MouseInput(MouseEventF flags, int x = 0, int y = 0, int data = 0, int time = 0, IntPtr extraInfo = default)
+        {
+            X = x;
+            Y = y;
+            Data = data;
+            Flags = flags;
+            Time = time;
+            ExtraInfo = extraInfo;
+        }
     }
 }

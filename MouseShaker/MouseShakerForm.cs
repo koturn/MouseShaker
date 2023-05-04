@@ -95,53 +95,24 @@ namespace MouseShaker
                         {
                             return;
                         }
-                        var inputDown = new Input()
-                        {
-                            Type = InputType.Mouse,
-                            Ui = new InputUnion()
-                            {
-                                Mouse = new MouseInput()
-                                {
-                                    X = offsetX,
-                                    Y = offsetY,
-                                    Data = 0,
-                                    Flags = MouseEventF.Move,
-                                    Time = 0,
-                                    ExtraInfo = IntPtr.Zero
-                                }
-                            }
-                        };
-                        var inputUp = new Input()
-                        {
-                            Type = InputType.Mouse,
-                            Ui = new InputUnion()
-                            {
-                                Mouse = new MouseInput()
-                                {
-                                    X = -offsetX,
-                                    Y = -offsetY,
-                                    Data = 0,
-                                    Flags = MouseEventF.Move,
-                                    Time = 0,
-                                    ExtraInfo = IntPtr.Zero
-                                }
-                            }
-                        };
 
-                        var intervalMs = (int)(1000.0 / (double)framerate);
-                        while (true)
+                        var mouseInputs = new[]
                         {
-                            InputUtil.SendInput(ref inputDown);
-                            Thread.Sleep(intervalMs);
-                            if (cts.IsCancellationRequested)
+                            Input.CreateMouseInput(MouseEventF.Move, offsetX, offsetY),
+                            Input.CreateMouseInput(MouseEventF.Move, -offsetX, -offsetY)
+                        };
+                        var intervalMs = (int)(1000.0 / (double)framerate);
+
+                        while (!cts.IsCancellationRequested)
+                        {
+                            for (int i = 0; i < mouseInputs.Length; i++)
                             {
-                                break;
-                            }
-                            InputUtil.SendInput(ref inputUp);
-                            Thread.Sleep(intervalMs);
-                            if (cts.IsCancellationRequested)
-                            {
-                                break;
+                                InputUtil.SendInput(ref mouseInputs[i]);
+                                Thread.Sleep(intervalMs);
+                                if (cts.IsCancellationRequested)
+                                {
+                                    break;
+                                }
                             }
                         }
                     },
