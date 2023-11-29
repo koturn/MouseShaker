@@ -233,8 +233,8 @@ namespace MouseShaker
             Controls.Add(tableLayoutPanelWindow);
             Name = "MouseShakerForm";
             Text = "MouseShaker: Inactive";
-            FormClosing += BurstClickForm_FormClosing;
-            Load += BurstClickForm_Load;
+            FormClosing += MouseShakerForm_FormClosing;
+            Load += MouseShakerForm_Load;
             tableLayoutPanelWindow.ResumeLayout(false);
             tableLayoutPanelWindow.PerformLayout();
             groupBoxConfig.ResumeLayout(false);

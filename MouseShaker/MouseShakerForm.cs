@@ -123,7 +123,7 @@ namespace MouseShaker
         /// </summary>
         /// <param name="sender">Instance of the <see cref="MouseShakerForm"/>.</param>
         /// <param name="e">An object that contains no event data.</param>
-        private void BurstClickForm_Load(object sender, EventArgs e)
+        private void MouseShakerForm_Load(object sender, EventArgs e)
         {
             ComboBoxHotKey_SelectedIndexChanged(_comboBoxHotKey, EventArgs.Empty);
         }
@@ -133,7 +133,7 @@ namespace MouseShaker
         /// </summary>
         /// <param name="sender">Instance of the <see cref="MouseShakerForm"/>.</param>
         /// <param name="e">An object that contains no event data.</param>
-        private void BurstClickForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void MouseShakerForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             HotKeyManager.UnregisterAll();
         }
