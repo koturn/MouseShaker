@@ -36,12 +36,12 @@ namespace MouseShaker
             System.Windows.Forms.Label labelOffset;
             System.Windows.Forms.Label label1;
             System.Windows.Forms.Label label2;
-            this._numericUpDownFramerate = new System.Windows.Forms.NumericUpDown();
-            this._comboBoxHotKey = new System.Windows.Forms.ComboBox();
-            this._numericUpDownOffsetX = new System.Windows.Forms.NumericUpDown();
-            this._numericUpDownOffsetY = new System.Windows.Forms.NumericUpDown();
-            this._labelStatus = new System.Windows.Forms.Label();
-            this._checkBoxMouseDrag = new System.Windows.Forms.CheckBox();
+            _numericUpDownFramerate = new System.Windows.Forms.NumericUpDown();
+            _comboBoxHotKey = new System.Windows.Forms.ComboBox();
+            _numericUpDownOffsetX = new System.Windows.Forms.NumericUpDown();
+            _numericUpDownOffsetY = new System.Windows.Forms.NumericUpDown();
+            _checkBoxMouseDrag = new System.Windows.Forms.CheckBox();
+            _labelStatus = new System.Windows.Forms.Label();
             tableLayoutPanelWindow = new System.Windows.Forms.TableLayoutPanel();
             groupBoxConfig = new System.Windows.Forms.GroupBox();
             tableLayoutPanelConfig = new System.Windows.Forms.TableLayoutPanel();
@@ -53,10 +53,10 @@ namespace MouseShaker
             tableLayoutPanelWindow.SuspendLayout();
             groupBoxConfig.SuspendLayout();
             tableLayoutPanelConfig.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._numericUpDownFramerate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this._numericUpDownOffsetX)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this._numericUpDownOffsetY)).BeginInit();
-            this.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)_numericUpDownFramerate).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)_numericUpDownOffsetX).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)_numericUpDownOffsetY).BeginInit();
+            SuspendLayout();
             // 
             // tableLayoutPanelWindow
             // 
@@ -64,7 +64,7 @@ namespace MouseShaker
             tableLayoutPanelWindow.ColumnCount = 1;
             tableLayoutPanelWindow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             tableLayoutPanelWindow.Controls.Add(groupBoxConfig, 0, 1);
-            tableLayoutPanelWindow.Controls.Add(this._labelStatus, 0, 0);
+            tableLayoutPanelWindow.Controls.Add(_labelStatus, 0, 0);
             tableLayoutPanelWindow.Dock = System.Windows.Forms.DockStyle.Fill;
             tableLayoutPanelWindow.Location = new System.Drawing.Point(0, 0);
             tableLayoutPanelWindow.Name = "tableLayoutPanelWindow";
@@ -97,14 +97,14 @@ namespace MouseShaker
             tableLayoutPanelConfig.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             tableLayoutPanelConfig.Controls.Add(labelHotKey, 0, 0);
             tableLayoutPanelConfig.Controls.Add(labelFramerate, 0, 1);
-            tableLayoutPanelConfig.Controls.Add(this._numericUpDownFramerate, 1, 1);
-            tableLayoutPanelConfig.Controls.Add(this._comboBoxHotKey, 1, 0);
+            tableLayoutPanelConfig.Controls.Add(_numericUpDownFramerate, 1, 1);
+            tableLayoutPanelConfig.Controls.Add(_comboBoxHotKey, 1, 0);
             tableLayoutPanelConfig.Controls.Add(labelOffset, 0, 2);
             tableLayoutPanelConfig.Controls.Add(label1, 1, 2);
             tableLayoutPanelConfig.Controls.Add(label2, 3, 2);
-            tableLayoutPanelConfig.Controls.Add(this._numericUpDownOffsetX, 2, 2);
-            tableLayoutPanelConfig.Controls.Add(this._numericUpDownOffsetY, 4, 2);
-            tableLayoutPanelConfig.Controls.Add(this._checkBoxMouseDrag, 0, 3);
+            tableLayoutPanelConfig.Controls.Add(_numericUpDownOffsetX, 2, 2);
+            tableLayoutPanelConfig.Controls.Add(_numericUpDownOffsetY, 4, 2);
+            tableLayoutPanelConfig.Controls.Add(_checkBoxMouseDrag, 0, 3);
             tableLayoutPanelConfig.Dock = System.Windows.Forms.DockStyle.Fill;
             tableLayoutPanelConfig.Location = new System.Drawing.Point(3, 19);
             tableLayoutPanelConfig.Name = "tableLayoutPanelConfig";
@@ -140,51 +140,28 @@ namespace MouseShaker
             // 
             // _numericUpDownFramerate
             // 
-            tableLayoutPanelConfig.SetColumnSpan(this._numericUpDownFramerate, 2);
-            this._numericUpDownFramerate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._numericUpDownFramerate.Location = new System.Drawing.Point(67, 32);
-            this._numericUpDownFramerate.Maximum = new decimal(new int[] {
-            120,
-            0,
-            0,
-            0});
-            this._numericUpDownFramerate.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this._numericUpDownFramerate.Name = "_numericUpDownFramerate";
-            this._numericUpDownFramerate.Size = new System.Drawing.Size(88, 23);
-            this._numericUpDownFramerate.TabIndex = 7;
-            this._numericUpDownFramerate.Value = new decimal(new int[] {
-            60,
-            0,
-            0,
-            0});
+            tableLayoutPanelConfig.SetColumnSpan(_numericUpDownFramerate, 2);
+            _numericUpDownFramerate.Dock = System.Windows.Forms.DockStyle.Fill;
+            _numericUpDownFramerate.Location = new System.Drawing.Point(67, 32);
+            _numericUpDownFramerate.Maximum = new decimal(new int[] { 120, 0, 0, 0 });
+            _numericUpDownFramerate.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            _numericUpDownFramerate.Name = "_numericUpDownFramerate";
+            _numericUpDownFramerate.Size = new System.Drawing.Size(88, 23);
+            _numericUpDownFramerate.TabIndex = 7;
+            _numericUpDownFramerate.Value = new decimal(new int[] { 60, 0, 0, 0 });
             // 
             // _comboBoxHotKey
             // 
-            tableLayoutPanelConfig.SetColumnSpan(this._comboBoxHotKey, 2);
-            this._comboBoxHotKey.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._comboBoxHotKey.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this._comboBoxHotKey.FormattingEnabled = true;
-            this._comboBoxHotKey.Items.AddRange(new object[] {
-            "F2",
-            "F3",
-            "F4",
-            "F5",
-            "F6",
-            "F7",
-            "F8",
-            "F9",
-            "F10",
-            "F11",
-            "F12"});
-            this._comboBoxHotKey.Location = new System.Drawing.Point(67, 3);
-            this._comboBoxHotKey.Name = "_comboBoxHotKey";
-            this._comboBoxHotKey.Size = new System.Drawing.Size(88, 23);
-            this._comboBoxHotKey.TabIndex = 5;
-            this._comboBoxHotKey.SelectedIndexChanged += new System.EventHandler(this.ComboBoxHotKey_SelectedIndexChanged);
+            tableLayoutPanelConfig.SetColumnSpan(_comboBoxHotKey, 2);
+            _comboBoxHotKey.Dock = System.Windows.Forms.DockStyle.Fill;
+            _comboBoxHotKey.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            _comboBoxHotKey.FormattingEnabled = true;
+            _comboBoxHotKey.Items.AddRange(new object[] { "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12" });
+            _comboBoxHotKey.Location = new System.Drawing.Point(67, 3);
+            _comboBoxHotKey.Name = "_comboBoxHotKey";
+            _comboBoxHotKey.Size = new System.Drawing.Size(88, 23);
+            _comboBoxHotKey.TabIndex = 5;
+            _comboBoxHotKey.SelectedIndexChanged += ComboBoxHotKey_SelectedIndexChanged;
             // 
             // labelOffset
             // 
@@ -221,89 +198,68 @@ namespace MouseShaker
             // 
             // _numericUpDownOffsetX
             // 
-            this._numericUpDownOffsetX.Location = new System.Drawing.Point(90, 61);
-            this._numericUpDownOffsetX.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this._numericUpDownOffsetX.Minimum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            -2147483648});
-            this._numericUpDownOffsetX.Name = "_numericUpDownOffsetX";
-            this._numericUpDownOffsetX.Size = new System.Drawing.Size(65, 23);
-            this._numericUpDownOffsetX.TabIndex = 11;
-            this._numericUpDownOffsetX.Value = new decimal(new int[] {
-            200,
-            0,
-            0,
-            0});
+            _numericUpDownOffsetX.Location = new System.Drawing.Point(90, 61);
+            _numericUpDownOffsetX.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
+            _numericUpDownOffsetX.Minimum = new decimal(new int[] { 1000, 0, 0, int.MinValue });
+            _numericUpDownOffsetX.Name = "_numericUpDownOffsetX";
+            _numericUpDownOffsetX.Size = new System.Drawing.Size(65, 23);
+            _numericUpDownOffsetX.TabIndex = 11;
             // 
             // _numericUpDownOffsetY
             // 
-            this._numericUpDownOffsetY.Location = new System.Drawing.Point(183, 61);
-            this._numericUpDownOffsetY.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this._numericUpDownOffsetY.Minimum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            -2147483648});
-            this._numericUpDownOffsetY.Name = "_numericUpDownOffsetY";
-            this._numericUpDownOffsetY.Size = new System.Drawing.Size(66, 23);
-            this._numericUpDownOffsetY.TabIndex = 12;
-            // 
-            // _labelStatus
-            // 
-            this._labelStatus.AutoSize = true;
-            this._labelStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._labelStatus.Font = new System.Drawing.Font("Yu Gothic UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this._labelStatus.Location = new System.Drawing.Point(3, 0);
-            this._labelStatus.Name = "_labelStatus";
-            this._labelStatus.Size = new System.Drawing.Size(258, 69);
-            this._labelStatus.TabIndex = 1;
-            this._labelStatus.Text = "Inactive";
-            this._labelStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            _numericUpDownOffsetY.Location = new System.Drawing.Point(183, 61);
+            _numericUpDownOffsetY.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
+            _numericUpDownOffsetY.Minimum = new decimal(new int[] { 1000, 0, 0, int.MinValue });
+            _numericUpDownOffsetY.Name = "_numericUpDownOffsetY";
+            _numericUpDownOffsetY.Size = new System.Drawing.Size(66, 23);
+            _numericUpDownOffsetY.TabIndex = 12;
+            _numericUpDownOffsetY.Value = new decimal(new int[] { 1000, 0, 0, int.MinValue });
             // 
             // _checkBoxMouseDrag
             // 
-            this._checkBoxMouseDrag.AutoSize = true;
-            tableLayoutPanelConfig.SetColumnSpan(this._checkBoxMouseDrag, 5);
-            this._checkBoxMouseDrag.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._checkBoxMouseDrag.Location = new System.Drawing.Point(3, 90);
-            this._checkBoxMouseDrag.Name = "_checkBoxMouseDrag";
-            this._checkBoxMouseDrag.Size = new System.Drawing.Size(246, 19);
-            this._checkBoxMouseDrag.TabIndex = 13;
-            this._checkBoxMouseDrag.Text = "With Mouse Drag";
-            this._checkBoxMouseDrag.UseVisualStyleBackColor = true;
+            _checkBoxMouseDrag.AutoSize = true;
+            tableLayoutPanelConfig.SetColumnSpan(_checkBoxMouseDrag, 5);
+            _checkBoxMouseDrag.Dock = System.Windows.Forms.DockStyle.Fill;
+            _checkBoxMouseDrag.Location = new System.Drawing.Point(3, 90);
+            _checkBoxMouseDrag.Name = "_checkBoxMouseDrag";
+            _checkBoxMouseDrag.Size = new System.Drawing.Size(246, 19);
+            _checkBoxMouseDrag.TabIndex = 13;
+            _checkBoxMouseDrag.Text = "With Mouse Drag";
+            _checkBoxMouseDrag.UseVisualStyleBackColor = true;
+            // 
+            // _labelStatus
+            // 
+            _labelStatus.AutoSize = true;
+            _labelStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            _labelStatus.Font = new System.Drawing.Font("Yu Gothic UI", 36F);
+            _labelStatus.Location = new System.Drawing.Point(3, 0);
+            _labelStatus.Name = "_labelStatus";
+            _labelStatus.Size = new System.Drawing.Size(258, 69);
+            _labelStatus.TabIndex = 1;
+            _labelStatus.Text = "Inactive";
+            _labelStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MouseShakerForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(264, 209);
-            this.Controls.Add(tableLayoutPanelWindow);
-            this.Name = "MouseShakerForm";
-            this.Text = "MouseShaker: Inactive";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BurstClickForm_FormClosing);
-            this.Load += new System.EventHandler(this.BurstClickForm_Load);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(264, 209);
+            Controls.Add(tableLayoutPanelWindow);
+            Name = "MouseShakerForm";
+            Text = "MouseShaker: Inactive";
+            FormClosing += BurstClickForm_FormClosing;
+            Load += BurstClickForm_Load;
             tableLayoutPanelWindow.ResumeLayout(false);
             tableLayoutPanelWindow.PerformLayout();
             groupBoxConfig.ResumeLayout(false);
             groupBoxConfig.PerformLayout();
             tableLayoutPanelConfig.ResumeLayout(false);
             tableLayoutPanelConfig.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._numericUpDownFramerate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this._numericUpDownOffsetX)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this._numericUpDownOffsetY)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            ((System.ComponentModel.ISupportInitialize)_numericUpDownFramerate).EndInit();
+            ((System.ComponentModel.ISupportInitialize)_numericUpDownOffsetX).EndInit();
+            ((System.ComponentModel.ISupportInitialize)_numericUpDownOffsetY).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
