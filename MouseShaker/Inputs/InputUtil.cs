@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Reflection;
+using System.Reflection.Emit;
 using System.Runtime.InteropServices;
 
 
@@ -44,6 +47,17 @@ namespace MouseShaker.Inputs
         public static int SendInput(Input[] inputs)
         {
             return NativeMethods.SendInput(inputs.Length, inputs, SizeOfInput);
+        }
+
+        /// <summary>
+        /// Managed wrapper of <see cref="NativeMethods.SendInput(int, Input[], int)"/>.
+        /// </summary>
+        /// <param name="inputs">An <see cref="List{T}"/> of <see cref="Input"/> structures.
+        /// Each structure represents an event to be inserted into the keyboard or mouse input stream.</param>
+        /// <returns>The number of events that it successfully inserted into the keyboard or mouse input stream.</returns>
+        public static int SendInput(List<Input> inputs)
+        {
+            return NativeMethods.SendInput(inputs.Count, ListUtil.GetArray(inputs), SizeOfInput);
         }
 
         /// <summary>
@@ -135,6 +149,68 @@ namespace MouseShaker.Inputs
             /// <remarks><seealso href="https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-sendinput"/></remarks>
             [DllImport("user32.dll", SetLastError = true)]
             public extern static int SendInput(int nInputs, Input[] inputs, int cbSize);
+        }
+
+        /// <summary>
+        /// Provides some utility methods of <see cref="List{T}"/>.
+        /// </summary>
+        internal static class ListUtil
+        {
+            /// <summary>
+            /// Get internal array of <see cref="List{T}"/>.
+            /// </summary>
+            public static T[] GetArray<T>(List<T> list)
+            {
+                return ListUtil<T>.GetArray(list);
+            }
+        }
+
+        /// <summary>
+        /// Provides some utility methods of <see cref="List{T}"/>.
+        /// </summary>
+        internal static class ListUtil<T>
+        {
+            /// <summary>
+            /// Cache of delegate of <see cref="CreateGetArrayFunc"/>.
+            /// </summary>
+            private static Func<List<T>, T[]>? _getArray;
+
+            /// <summary>
+            /// Get internal array of <see cref="List{T}"/>.
+            /// </summary>
+            /// <param name="list">Target list.</param>
+            /// <returns>Internal array of <see cref="List{T}"/>.</returns>
+            public static T[] GetArray(List<T> list)
+            {
+                return (_getArray ??= CreateGetArrayFunc())(list);
+            }
+
+            /// <summary>
+            /// Create method which gets internal array of <see cref="List{T}"/>.
+            /// </summary>
+            /// <typeparam name="T">Element type of <see cref="List{T}"/>.</typeparam>
+            private static Func<List<T>, T[]> CreateGetArrayFunc()
+            {
+                var dynMethod = new DynamicMethod(
+                    "GetListArray",
+                    typeof(T[]),
+                    new[] { typeof(List<T>) },
+                    true);
+
+                var ilGen = dynMethod.GetILGenerator();
+                ilGen.Emit(OpCodes.Ldarg_0);
+                ilGen.Emit(
+                    OpCodes.Ldfld,
+                    typeof(List<T>).GetField(
+                        "_items",
+                        BindingFlags.GetField
+                            | BindingFlags.NonPublic
+                            | BindingFlags.Instance)
+                    ?? throw new ArgumentException("FieldInfo not found: System.Collections.Generic.List<T>._items"));
+                ilGen.Emit(OpCodes.Ret);
+
+                return (Func<List<T>, T[]>)dynMethod.CreateDelegate(typeof(Func<List<T>, T[]>));
+            }
         }
     }
 }
